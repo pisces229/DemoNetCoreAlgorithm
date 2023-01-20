@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoNetCoreAlgorithm.App", "DemoNetCoreAlgorithm.App\DemoNetCoreAlgorithm.App.csproj", "{9D3DA808-B090-4DA9-B67E-5936D53FAF32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoNetCoreAlgorithm.Test", "DemoNetCoreAlgorithm.Test\DemoNetCoreAlgorithm.Test.csproj", "{98FAA369-C7CB-4B57-8B10-6D2BDD43576F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D3DA808-B090-4DA9-B67E-5936D53FAF32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D3DA808-B090-4DA9-B67E-5936D53FAF32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D3DA808-B090-4DA9-B67E-5936D53FAF32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D3DA808-B090-4DA9-B67E-5936D53FAF32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98FAA369-C7CB-4B57-8B10-6D2BDD43576F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98FAA369-C7CB-4B57-8B10-6D2BDD43576F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98FAA369-C7CB-4B57-8B10-6D2BDD43576F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98FAA369-C7CB-4B57-8B10-6D2BDD43576F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9CED961-E18C-4370-B76D-329EEAF040BD}
+	EndGlobalSection
+EndGlobal
