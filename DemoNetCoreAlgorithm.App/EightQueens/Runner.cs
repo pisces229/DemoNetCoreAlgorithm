@@ -56,7 +56,6 @@ namespace DemoNetCoreAlgorithm.App.EightQueens
                             if (r > 0)
                             {
                                 var temp = new int[_count];
-                                // counterclockwise
                                 for (var i = 0; i < _count; ++i)
                                 {
                                     // counterclockwise
@@ -73,13 +72,13 @@ namespace DemoNetCoreAlgorithm.App.EightQueens
                             }
                             {
                                 // mirror
-                                var mirror = new int[_count];
+                                var temp = new int[_count];
                                 for (var i = 0; i < _count; ++i)
-                                    mirror[i] = (rotate[i] * -1) + (_count - 1);
-                                if (!_solution!.Contains(string.Join("|", mirror)))
+                                    temp[i] = (rotate[i] * -1) + (_count - 1);
+                                if (!_solution!.Contains(string.Join("|", temp)))
                                 {
                                     Array.Resize(ref _solution, _solution.Length + 1);
-                                    _solution[^1] = string.Join("|", mirror);
+                                    _solution[^1] = string.Join("|", temp);
                                 }
                             }
                         }
