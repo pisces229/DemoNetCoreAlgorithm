@@ -2,4 +2,4 @@
 
 Console.WriteLine("DemoNetCoreAlgorithm");
 
-Factory.Run(FactoryType.EightQueens);
+Factory.Run(FactoryType.Permutation);

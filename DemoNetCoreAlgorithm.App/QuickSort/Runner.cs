@@ -8,40 +8,49 @@ namespace DemoNetCoreAlgorithm.App.QuickSort
 {
     public class Runner
     {
-        public void Debug()
+        private int[] _value;
+        public Runner(int[] args) 
         { 
+            _value = args;
         }
-        public int[] Run(int[] r)
+        public static void Debug()
         {
-            Do(r, 0, r.Length - 1);
-            return r;
+            var runner = new Runner(new int[] { 0, 9, 5, 5, 5, 7, 1, 4, 7, 4 });
+            var result = runner.Run();
+            Console.WriteLine(string.Join(",", result));
         }
-        private void Do(int[] r, int left, int right)
+        public int[] Run()
+        {
+            Do(0, _value.Length - 1);
+            Console.WriteLine(string.Join(",", _value));
+            return _value;
+        }
+        private void Do(int left, int right)
         {
             if (left >= right) return;
             var start = left;
             var end = right;
-            var pivot = r[left];
+            var pivot = _value[left];
             ++start;
             while (start < end)
             {
-                if (r[start] < pivot)
+                if (_value[start] < pivot)
                 {
                     ++start;
                     continue;
                 }
-                if (r[end] >= pivot)
+                if (_value[end] >= pivot)
                 {
                     --end;
                     continue;
                 }
-                if (r[start] >= pivot && r[end] < pivot)
-                    (r[start], r[end]) = (r[end], r[start]);
+                if (_value[start] >= pivot && _value[end] < pivot)
+                    (_value[start], _value[end]) = (_value[end], _value[start]);
             }
-            if (r[left] > r[start])
-                (r[left], r[start]) = (r[start], r[left]);
-            Do(r, left, start - 1);
-            Do(r, start, right);
+            if (_value[left] > _value[start])
+                (_value[left], _value[start]) = (_value[start], _value[left]);
+            Do(left, start - 1);
+            Do(start, right);
         }
     }
 }

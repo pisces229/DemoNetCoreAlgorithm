@@ -5,28 +5,31 @@ namespace DemoNetCoreAlgorithm.App.EightQueens
     public class Runner
     {
         private int _count;
-        private bool _unique;
-        private bool[]? _column;
-        private bool[]? _rightSlash;
-        private bool[]? _leftSlash;
-        private int[]? _queen;
+        private bool _unique = true;
+        private bool[] _column;
+        private bool[] _rightSlash;
+        private bool[] _leftSlash;
+        private int[] _queen;
         private int _resultCount;
         private string[] _solution = Array.Empty<string>();
-        public void Debug()
+        public Runner(int args)
         {
-            Run(8, true);
+            _count = args;
+            _column = new bool[args];
+            _rightSlash = new bool[args * 2 - 1];
+            _leftSlash = new bool[args * 2 - 1];
+            _queen = new int[args];
         }
-        public int Run(int count, bool unique) 
+        public static void Debug()
         {
-            _count = count;
-            _column = new bool[count];
-            _rightSlash = new bool[count * 2 - 1];
-            _leftSlash = new bool[count * 2 - 1];
-            _queen = new int[count];
-            _unique = unique;
+            var runner = new Runner(8);
+            var result = runner.Run();
+            Console.WriteLine($"[{result}]");
+        }
+        public int Run() 
+        {
             Do(0);
             Console.WriteLine();
-
             if (_unique)
             {
                 Console.WriteLine($"unique:[{_resultCount}]");
@@ -44,13 +47,13 @@ namespace DemoNetCoreAlgorithm.App.EightQueens
             {
                 if (_unique)
                 {
-                    if (!_solution!.Contains(string.Join("|", _queen!)))
+                    if (!_solution.Contains(string.Join("|", _queen)))
                     {
                         ++_resultCount;
-                        Print(_queen!);
+                        Print(_queen);
                         var rotate = new int[_count];
                         for (var i = 0; i < _count; ++i) 
-                            rotate[i] = _queen![i];
+                            rotate[i] = _queen[i];
                         for (var r = 0; r < 4; ++r)
                         {
                             if (r > 0)
@@ -65,7 +68,7 @@ namespace DemoNetCoreAlgorithm.App.EightQueens
                                 }
                                 rotate = temp;
                             }
-                            if (!_solution!.Contains(string.Join("|", rotate)))
+                            if (!_solution.Contains(string.Join("|", rotate)))
                             {
                                 Array.Resize(ref _solution, _solution.Length + 1);
                                 _solution[^1] = string.Join("|", rotate);
@@ -75,7 +78,7 @@ namespace DemoNetCoreAlgorithm.App.EightQueens
                                 var temp = new int[_count];
                                 for (var i = 0; i < _count; ++i)
                                     temp[i] = (rotate[i] * -1) + (_count - 1);
-                                if (!_solution!.Contains(string.Join("|", temp)))
+                                if (!_solution.Contains(string.Join("|", temp)))
                                 {
                                     Array.Resize(ref _solution, _solution.Length + 1);
                                     _solution[^1] = string.Join("|", temp);
@@ -86,10 +89,8 @@ namespace DemoNetCoreAlgorithm.App.EightQueens
                 }
                 else
                 {
-                    //Array.Resize(ref _solution, _solution.Length + 1);
-                    //_solution[^1] = string.Join("|", _queen!);
                     ++_resultCount;
-                    Print(_queen!);
+                    Print(_queen);
                 }
                 return;
             }
@@ -97,12 +98,12 @@ namespace DemoNetCoreAlgorithm.App.EightQueens
             {
                 var rightSlashIndex = current + i;
                 var leftSlashIndex = (_count - 1) + current - i;
-                if (!_column![i] && !_rightSlash![rightSlashIndex] && !_leftSlash![leftSlashIndex])
+                if (!_column[i] && !_rightSlash[rightSlashIndex] && !_leftSlash[leftSlashIndex])
                 {
-                    _queen![current] = i;
-                    _column![i] = _rightSlash![rightSlashIndex] = _leftSlash![leftSlashIndex] = true;
+                    _queen[current] = i;
+                    _column[i] = _rightSlash[rightSlashIndex] = _leftSlash[leftSlashIndex] = true;
                     Do(current + 1);
-                    _column![i] = _rightSlash![rightSlashIndex] = _leftSlash![leftSlashIndex] = false;
+                    _column[i] = _rightSlash[rightSlashIndex] = _leftSlash[leftSlashIndex] = false;
                 }
             }
         }

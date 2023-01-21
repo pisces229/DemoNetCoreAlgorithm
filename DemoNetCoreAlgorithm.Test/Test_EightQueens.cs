@@ -8,13 +8,8 @@ namespace DemoNetCoreAlgorithm.Test
         [TestMethod("TestMethod1"), Timeout(1_000)]
         public void TestMethod1()
         {
-            var result = new Runner().Run(8, false);
-            Assert.AreEqual(92, result);
-        }
-        [TestMethod("TestMethod2"), Timeout(1_000)]
-        public void TestMethod2()
-        {
-            var result = new Runner().Run(8, true);
+            var runner = new Runner(8);
+            var result = runner.Run();
             Assert.AreEqual(12, result);
         }
     }

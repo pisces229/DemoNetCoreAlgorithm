@@ -10,16 +10,14 @@ namespace DemoNetCoreAlgorithm.Test
         {
             var len = 10;
             var random = new Random(DateTime.Now.Millisecond);
-            var r = new int[len].ToList().Select(s => random.Next(0, 10)).ToArray();
-            //var r = new int[] { 0, 9, 5, 5, 5, 7, 1, 4, 7, 4 };
-            var v = r.ToList();
-            v.Sort();
-            //Console.WriteLine("[{0}]", string.Join(", ", r));
-            //Console.WriteLine("[{0}]", string.Join(", ", v));
-            new Runner().Run(r);
-            //Console.WriteLine("[{0}]", string.Join(", ", r));
+            var args = new int[len].ToList().Select(s => random.Next(0, 10)).ToArray();
+            //var args = new int[] { 0, 9, 5, 5, 5, 7, 1, 4, 7, 4 };
+            var success = args.ToList();
+            success.Sort();
+            var runner = new Runner(args);
+            var result = runner.Run();
             for (var i = 0; i < len; ++i)
-                Assert.AreEqual(v[i], r[i]);
+                Assert.AreEqual(success[i], result[i]);
         }
     }
 }
