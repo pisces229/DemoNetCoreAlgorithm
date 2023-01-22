@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Linq;
 
 namespace DemoNetCoreAlgorithm.App.BinaryTree
 {
@@ -9,6 +10,10 @@ namespace DemoNetCoreAlgorithm.App.BinaryTree
             var runner = new Runner(new int[] { 5, 7, 1, 2, 9, 4, 8, 6, 3 });
             var result = runner.Run();
             //var runner = new Runner(new int[] { 5, 7, 1, 2, 9, 4, 8, 6, 5 });
+            //var result = runner.Run();
+            //var runner = new Runner(new int[] { 8, 5, 1, 7, 10, 12 });
+            //var result = runner.Run();
+            //var runner = new Runner(new int[] { 4, 3, 2, 1, 5 });
             //var result = runner.Run();
             //var runner = new Runner(new int[] { 1, 3, 5, 7, 9, 11, 13, 15 });
             //var result = runner.UniquePreorderBalancRun();
@@ -31,7 +36,9 @@ namespace DemoNetCoreAlgorithm.App.BinaryTree
             {
                 Create(root, _value[i]);
             }
+            Order(root);
             Visit(root);
+            Console.WriteLine();
             return _list.ToArray();
         }
         private void Create(TreeNode node, int value)
@@ -64,7 +71,7 @@ namespace DemoNetCoreAlgorithm.App.BinaryTree
             var middle = _len / 2;
             var root = new TreeNode(_value[middle]);
             UniquePreorderBalancCreate(root, 0, middle - 1, middle + 1, _len - 1);
-            Visit(root);
+            Order(root);
             return _list.ToArray();
         }
         private void UniquePreorderBalancCreate(TreeNode node, int leftStart, int leftEnd, int rightStart, int rightEnd)
@@ -82,13 +89,30 @@ namespace DemoNetCoreAlgorithm.App.BinaryTree
                 UniquePreorderBalancCreate(node.Right, rightStart, middle - 1, middle + 1, rightEnd);
             }
         }
+        private void Order(TreeNode? node)
+        {
+            if (node != null)
+            {
+                Order(node.Left);
+                _list.Add(node.Value);
+                Order(node.Right);
+            }
+        }
         private void Visit(TreeNode? node)
         {
             if (node != null)
             {
+                Console.Write($"{node.Value},");
                 Visit(node.Left);
-                _list.Add(node.Value);
+                if (node.Left == null && node.Right != null)
+                {
+                    Console.Write("null,");
+                }
                 Visit(node.Right);
+                if (node.Left != null && node.Right == null)
+                {
+                    Console.Write("null,");
+                }
             }
         }
         private class TreeNode
