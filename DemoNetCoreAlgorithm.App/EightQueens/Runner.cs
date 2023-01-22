@@ -4,6 +4,12 @@ namespace DemoNetCoreAlgorithm.App.EightQueens
 {
     public class Runner
     {
+        public static void Debug()
+        {
+            var runner = new Runner(8);
+            var result = runner.Run();
+            Console.WriteLine($"[{result}]");
+        }
         private int _count;
         private bool _unique = true;
         private bool[] _column;
@@ -19,12 +25,6 @@ namespace DemoNetCoreAlgorithm.App.EightQueens
             _rightSlash = new bool[args * 2 - 1];
             _leftSlash = new bool[args * 2 - 1];
             _queen = new int[args];
-        }
-        public static void Debug()
-        {
-            var runner = new Runner(8);
-            var result = runner.Run();
-            Console.WriteLine($"[{result}]");
         }
         public int Run() 
         {

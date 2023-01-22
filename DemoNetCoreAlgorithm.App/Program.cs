@@ -2,4 +2,4 @@
 
 Console.WriteLine("DemoNetCoreAlgorithm");
 
-Factory.Run(FactoryType.Permutation);
+Factory.Run(FactoryType.BinaryTree);

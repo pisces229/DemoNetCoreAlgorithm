@@ -8,6 +8,9 @@ namespace DemoNetCoreAlgorithm.App
         {
             switch (type)
             {
+                case FactoryType.BinaryTree:
+                    BinaryTree.Runner.Debug();
+                    break;
                 case FactoryType.EightQueens:
                     EightQueens.Runner.Debug();
                     break;
@@ -22,6 +25,7 @@ namespace DemoNetCoreAlgorithm.App
     }
     public enum FactoryType
     {
+        BinaryTree,
         EightQueens,
         Permutation,
         QuickSort,

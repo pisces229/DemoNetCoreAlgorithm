@@ -4,14 +4,6 @@ namespace DemoNetCoreAlgorithm.App.Permutation
 {
     public class Runner
     {
-        private int _count;
-        private string[] _values;
-        private int _result;
-        public Runner(string[] args) 
-        {
-            _count = args.Length;
-            _values = args;
-        }
         public static void Debug()
         {
             //var runner = new Runner(new string[] { "A", "B", "C" });
@@ -19,6 +11,14 @@ namespace DemoNetCoreAlgorithm.App.Permutation
             var runner = new Runner(new string[] { "A", "B", "C", "D", "E" });
             var result = runner.Run();
             Console.WriteLine($"[{result}]");
+        }
+        private int _count;
+        private string[] _values;
+        private int _result;
+        public Runner(string[] args) 
+        {
+            _count = args.Length;
+            _values = args;
         }
         public int Run()
         { 

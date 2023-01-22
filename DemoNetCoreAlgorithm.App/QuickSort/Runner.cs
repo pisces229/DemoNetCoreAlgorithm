@@ -1,23 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DemoNetCoreAlgorithm.App.QuickSort
 {
     public class Runner
     {
-        private int[] _value;
-        public Runner(int[] args) 
-        { 
-            _value = args;
-        }
         public static void Debug()
         {
             var runner = new Runner(new int[] { 0, 9, 5, 5, 5, 7, 1, 4, 7, 4 });
             var result = runner.Run();
             Console.WriteLine(string.Join(",", result));
+        }
+        private int[] _value;
+        public Runner(int[] args) 
+        { 
+            _value = args;
         }
         public int[] Run()
         {

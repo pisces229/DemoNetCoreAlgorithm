@@ -1,9 +1,9 @@
-using DemoNetCoreAlgorithm.App.QuickSort;
+using DemoNetCoreAlgorithm.App.BinaryTree;
 
 namespace DemoNetCoreAlgorithm.Test
 {
     [TestClass]
-    public class Test_QuickSort
+    public class Test_BinaryTree
     {
         [TestMethod("TestMethod1"), Timeout(1_000)]
         public void TestMethod1()
