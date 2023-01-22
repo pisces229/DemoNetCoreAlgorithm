@@ -11,6 +11,9 @@ namespace DemoNetCoreAlgorithm.App
                 case FactoryType.BinaryTree:
                     BinaryTree.Runner.Debug();
                     break;
+                case FactoryType.BinaryTreeTraversal:
+                    BinaryTreeTraversal.Runner.Debug();
+                    break;
                 case FactoryType.EightQueens:
                     EightQueens.Runner.Debug();
                     break;
@@ -26,6 +29,7 @@ namespace DemoNetCoreAlgorithm.App
     public enum FactoryType
     {
         BinaryTree,
+        BinaryTreeTraversal,
         EightQueens,
         Permutation,
         QuickSort,
