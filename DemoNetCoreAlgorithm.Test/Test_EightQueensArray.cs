@@ -1,9 +1,9 @@
-﻿using DemoNetCoreAlgorithm.App.EightQueens;
+﻿using DemoNetCoreAlgorithm.App.EightQueensArray;
 
 namespace DemoNetCoreAlgorithm.Test
 {
     [TestClass]
-    public class Test_EightQueens
+    public class Test_EightQueensArray
     {
         [TestMethod("TestMethod1"), Timeout(1_000)]
         public void TestMethod1()

@@ -1,30 +1,26 @@
 ﻿using System;
 
-namespace DemoNetCoreAlgorithm.App.EightQueens
+namespace DemoNetCoreAlgorithm.App.EightQueensSwap
 {
     public class Runner
     {
         public static void Debug()
         {
-            var runner = new Runner(8);
+            var runner = new Runner(12);
             var result = runner.Run();
             Console.WriteLine($"[{result}]");
         }
-        private int _count;
         private bool _unique = true;
-        private bool[] _column;
-        private bool[] _rightSlash;
-        private bool[] _leftSlash;
         private int[] _queen;
         private int _resultCount;
         private string[] _solution = Array.Empty<string>();
         public Runner(int args)
         {
-            _count = args;
-            _column = new bool[args];
-            _rightSlash = new bool[args * 2 - 1];
-            _leftSlash = new bool[args * 2 - 1];
             _queen = new int[args];
+            for (int i = 0; i < args; i++)
+            {
+                _queen[i] = i;
+            }
         }
         public int Run() 
         {
@@ -43,7 +39,7 @@ namespace DemoNetCoreAlgorithm.App.EightQueens
         }
         private void Do(int current)
         {
-            if (current == _count)
+            if (current == _queen.Length)
             {
                 if (_unique)
                 {
@@ -51,20 +47,20 @@ namespace DemoNetCoreAlgorithm.App.EightQueens
                     {
                         ++_resultCount;
                         Print(_queen);
-                        var rotate = new int[_count];
-                        for (var i = 0; i < _count; ++i) 
+                        var rotate = new int[_queen.Length];
+                        for (var i = 0; i < _queen.Length; ++i)
                             rotate[i] = _queen[i];
                         for (var r = 0; r < 4; ++r)
                         {
                             if (r > 0)
                             {
-                                var temp = new int[_count];
-                                for (var i = 0; i < _count; ++i)
+                                var temp = new int[_queen.Length];
+                                for (var i = 0; i < _queen.Length; ++i)
                                 {
                                     // counterclockwise
-                                    temp[(rotate[i] * -1) + (_count - 1)] = i;
+                                    temp[(_queen.Length - 1) - rotate[i]] = i;
                                     // clockwise
-                                    //temp[rotate[i]] = (i * -1) + (_count - 1);
+                                    //temp[rotate[i]] = (_queen.Length - 1) - i;
                                 }
                                 rotate = temp;
                             }
@@ -75,9 +71,9 @@ namespace DemoNetCoreAlgorithm.App.EightQueens
                             }
                             {
                                 // mirror
-                                var temp = new int[_count];
-                                for (var i = 0; i < _count; ++i)
-                                    temp[i] = (rotate[i] * -1) + (_count - 1);
+                                var temp = new int[_queen.Length];
+                                for (var i = 0; i < _queen.Length; ++i)
+                                    temp[i] = (_queen.Length - 1) - rotate[i];
                                 if (!_solution.Contains(string.Join("|", temp)))
                                 {
                                     Array.Resize(ref _solution, _solution.Length + 1);
@@ -94,18 +90,24 @@ namespace DemoNetCoreAlgorithm.App.EightQueens
                 }
                 return;
             }
-            for (var i = 0; i < _count; ++i)
+            for (var i = current; i < _queen.Length; ++i)
             {
-                var rightSlashIndex = current + i;
-                var leftSlashIndex = (_count - 1) + current - i;
-                if (!_column[i] && !_rightSlash[rightSlashIndex] && !_leftSlash[leftSlashIndex])
+                (_queen[current], _queen[i]) = (_queen[i], _queen[current]);
+                if (Space(current))
                 {
-                    _queen[current] = i;
-                    _column[i] = _rightSlash[rightSlashIndex] = _leftSlash[leftSlashIndex] = true;
                     Do(current + 1);
-                    _column[i] = _rightSlash[rightSlashIndex] = _leftSlash[leftSlashIndex] = false;
                 }
+                (_queen[current], _queen[i]) = (_queen[i], _queen[current]);
             }
+        }
+        private bool Space(int current)
+        {
+            for (var i = 0; i < current; ++i)
+            {
+                if (current - i == Math.Abs(_queen[current] - _queen[i]))
+                    return false;
+            }
+            return true;
         }
         private void Print(int[] content)
         {

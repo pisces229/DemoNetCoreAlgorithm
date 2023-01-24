@@ -2,7 +2,7 @@
 
 Console.WriteLine("DemoNetCoreAlgorithm");
 
-Factory.Run(FactoryType.BinaryTreeTraversal);
+Factory.Run(FactoryType.EightQueensSwap);
 
 // (FIFO)
 //Queue<int> queue = new Queue<int>();

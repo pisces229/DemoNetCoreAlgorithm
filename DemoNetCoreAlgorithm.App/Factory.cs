@@ -14,8 +14,11 @@ namespace DemoNetCoreAlgorithm.App
                 case FactoryType.BinaryTreeTraversal:
                     BinaryTreeTraversal.Runner.Debug();
                     break;
-                case FactoryType.EightQueens:
-                    EightQueens.Runner.Debug();
+                case FactoryType.EightQueensArray:
+                    EightQueensArray.Runner.Debug();
+                    break;
+                case FactoryType.EightQueensSwap:
+                    EightQueensSwap.Runner.Debug();
                     break;
                 case FactoryType.Permutation:
                     Permutation.Runner.Debug();
@@ -30,7 +33,8 @@ namespace DemoNetCoreAlgorithm.App
     {
         BinaryTree,
         BinaryTreeTraversal,
-        EightQueens,
+        EightQueensArray,
+        EightQueensSwap,
         Permutation,
         QuickSort,
     }
