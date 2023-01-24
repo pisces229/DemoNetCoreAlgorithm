@@ -6,11 +6,11 @@ namespace DemoNetCoreAlgorithm.App.EightQueensSwap
     {
         public static void Debug()
         {
-            var runner = new Runner(12);
+            var runner = new Runner(4);
             var result = runner.Run();
             Console.WriteLine($"[{result}]");
         }
-        private bool _unique = true;
+        private bool _unique = false;
         private int[] _queen;
         private int _resultCount;
         private string[] _solution = Array.Empty<string>();
@@ -111,15 +111,15 @@ namespace DemoNetCoreAlgorithm.App.EightQueensSwap
         }
         private void Print(int[] content)
         {
-            //Console.WriteLine();
-            //foreach (var q in content)
-            //{
-            //    for (var i = 0; i < _count; ++i)
-            //    {
-            //        Console.Write(q == i ? "Q" : ".");
-            //    }
-            //    Console.WriteLine();
-            //}
+            Console.WriteLine();
+            foreach (var q in content)
+            {
+                for (var i = 0; i < content.Length; ++i)
+                {
+                    Console.Write(q == i ? "Q" : ".");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
