@@ -20,6 +20,9 @@ namespace DemoNetCoreAlgorithm.App
                 case FactoryType.EightQueensSwap:
                     EightQueensSwap.Runner.Debug();
                     break;
+                case FactoryType.FisherYatesShuffle:
+                    FisherYatesShuffle.Runner.Debug();
+                    break;
                 case FactoryType.Permutation:
                     Permutation.Runner.Debug();
                     break;
@@ -35,6 +38,7 @@ namespace DemoNetCoreAlgorithm.App
         BinaryTreeTraversal,
         EightQueensArray,
         EightQueensSwap,
+        FisherYatesShuffle,
         Permutation,
         QuickSort,
     }

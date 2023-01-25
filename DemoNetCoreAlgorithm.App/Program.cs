@@ -2,7 +2,7 @@
 
 Console.WriteLine("DemoNetCoreAlgorithm");
 
-//Factory.Run(FactoryType.EightQueensSwap);
+Factory.Run(FactoryType.FisherYatesShuffle);
 
 // (FIFO)
 //Queue<int> queue = new Queue<int>();
