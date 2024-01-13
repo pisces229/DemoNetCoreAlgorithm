@@ -6,47 +6,49 @@ namespace DemoNetCoreAlgorithm.App.QuickSort
     {
         public static void Debug()
         {
-            var runner = new Runner(new int[] { 0, 9, 5, 5, 5, 7, 1, 4, 7, 4 });
-            var result = runner.Run();
+            var runner = new Runner();
+            var result = runner.Run(new int[] { 0, 9, 5, 5, 5, 7, 1, 4, 7, 4 });
             Console.WriteLine(string.Join(",", result));
         }
-        private int[] _value;
-        public Runner(int[] args) 
-        { 
-            _value = args;
-        }
-        public int[] Run()
+        public int[] Run(int[] args)
         {
-            Do(0, _value.Length - 1);
-            Console.WriteLine(string.Join(",", _value));
-            return _value;
+            Do(args, 0, args.Length - 1);
+            Console.WriteLine(string.Join(",", args));
+            return args;
         }
-        private void Do(int left, int right)
+        private void Do(int[] values, int left, int right)
         {
-            if (left >= right) return;
+            if (left > right)
+            {
+                return;
+            }
+            var pivot = values[(left + right) / 2];
             var start = left;
             var end = right;
-            var pivot = _value[left];
-            ++start;
-            while (start < end)
+            while (start <= end)
             {
-                if (_value[start] < pivot)
+                while (start <= end && values[start] < pivot)
+                //while (start <= end && values[start] > pivot)
                 {
                     ++start;
-                    continue;
                 }
-                if (_value[end] >= pivot)
+                while (end >= start && values[end] > pivot)
+                //while (end >= start && values[end] < pivot)
                 {
                     --end;
-                    continue;
                 }
-                if (_value[start] >= pivot && _value[end] < pivot)
-                    (_value[start], _value[end]) = (_value[end], _value[start]);
+                if (start <= end)
+                {
+                    if (start != end)
+                    {
+                        (values[start], values[end]) = (values[end], values[start]);
+                    }
+                    ++start;
+                    --end;
+                }
             }
-            if (_value[left] > _value[start])
-                (_value[left], _value[start]) = (_value[start], _value[left]);
-            Do(left, start - 1);
-            Do(start, right);
+            Do(values, left, end);
+            Do(values, start, right);
         }
     }
 }
