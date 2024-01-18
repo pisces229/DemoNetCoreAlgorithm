@@ -29,6 +29,9 @@ namespace DemoNetCoreAlgorithm.App
                 case FactoryType.QuickSort:
                     QuickSort.Runner.Debug();
                     break;
+                case FactoryType.TowerOfHanoi:
+                    TowerOfHanoi.Runner.Debug();
+                    break;
             }
         }
     }
@@ -41,5 +44,6 @@ namespace DemoNetCoreAlgorithm.App
         FisherYatesShuffle,
         Permutation,
         QuickSort,
+        TowerOfHanoi,
     }
 }
